@@ -1,6 +1,9 @@
-name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+name: Deploy Wekan To Dev
+
+run-name: ${{ github.actor }} deploying DEV version of Wekan 🚀
+
 on: [push, workflow_dispatch]
+
 jobs:
   build-wekan:
     runs-on: ubuntu-latest
