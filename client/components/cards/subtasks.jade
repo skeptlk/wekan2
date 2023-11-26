@@ -2,6 +2,12 @@ template(name="subtasks")
   h3.card-details-item-title
     i.fa.fa-sitemap
     | {{_ 'subtasks'}}
+    if canModifyCard
+      +inlinedForm(autoclose=false classNames="js-add-subtask" cardId = cardId)
+        +addSubtaskItemForm
+      else
+        a.js-subtask-button.js-open-inlined-form(title="{{_ 'add-subtask'}}")
+          i.fa.fa-plus
   if currentUser.isBoardAdmin
     if toggleDeleteDialog.get
       .board-overlay#card-details-overlay
@@ -10,13 +16,6 @@ template(name="subtasks")
   .card-subtasks-items
     each subtask in currentCard.subtasks
       +subtaskDetail(subtask = subtask)
-
-  if canModifyCard
-    +inlinedForm(autoclose=false classNames="js-add-subtask" cardId = cardId)
-      +addSubtaskItemForm
-    else
-      a.js-open-inlined-form(title="{{_ 'add-subtask'}}")
-        i.fa.fa-plus
 
 template(name="subtaskDetail")
   .js-subtasks.subtask

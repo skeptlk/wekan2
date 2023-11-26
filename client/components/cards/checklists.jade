@@ -14,13 +14,6 @@ template(name="checklists")
     each checklist in checklists
       +checklistDetail(checklist=checklist)
 
-  if canModifyCard
-    +inlinedForm(autoclose=false classNames="js-add-checklist" cardId = cardId)
-      +addChecklistItemForm(checklist=checklist showNewlineBecomesNewChecklistItem=false)
-    else
-      a.add-checklist.js-open-inlined-form(title="{{_ 'add-checklist'}}")
-        i.fa.fa-plus
-
 template(name="checklistDetail")
   .js-checklist.checklist
     +inlinedForm(classNames="js-edit-checklist-title" checklist = checklist)
@@ -84,13 +77,6 @@ template(name="editChecklistItemForm")
         | {{_ 'convertChecklistItemToCardPopup-title'}}
 
 template(name="checklistItems")
-  if checklist.items.length
-    if canModifyCard
-      +inlinedForm(autoclose=false classNames="js-add-checklist-item" checklist = checklist position="top")
-        +addChecklistItemForm(checklist=checklist showNewlineBecomesNewChecklistItem=true)
-      else
-        a.add-checklist-item.js-open-inlined-form(title="{{_ 'add-checklist-item'}}")
-          i.fa.fa-plus
   .checklist-items.js-checklist-items
     each item in checklist.items
       +inlinedForm(classNames="js-edit-checklist-item" item = item checklist = checklist)

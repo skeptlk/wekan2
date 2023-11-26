@@ -1,6 +1,14 @@
 .js-add-subtask {
   color: #8c8c8c;
 }
+.js-subtask-button {
+  padding: 0 20px;
+}
+.js-subtask-button:hover {
+  background: #dbdbdb;
+  color: #222;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
 textarea.js-add-subtask-item,
 textarea.js-edit-subtask-item {
   overflow: hidden;

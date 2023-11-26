@@ -167,12 +167,16 @@ textarea.js-edit-checklist-item {
   padding: 12px 0 0 0;
 }
 .add-checklist-item {
-  margin: 0.2em 0 0.5em 1.33em;
+  margin: 1rem 0;
+  padding: 4px;
+  text-align: center;
+  background-color: #ebebeb;
+  border-radius: 4px;
 }
 .add-checklist-item.js-open-inlined-form,
 .add-checklist.js-open-inlined-form {
   display: block;
-  width: 50%;
+  width: 100%;
 }
 .add-checklist-item.js-open-inlined-form:hover,
 .add-checklist.js-open-inlined-form:hover {

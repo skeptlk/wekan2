@@ -1041,7 +1041,6 @@ Boards.helpers({
   },
 
   searchCards(term, excludeLinked) {
-    let ret = null;
     if (term) {
       check(term, Match.OneOf(String));
       term = term.trim();
@@ -1064,13 +1063,14 @@ Boards.helpers({
       query.$or = [
         { title: regex },
         { description: regex },
+        { cardNumber: isNaN(term) ? null : Number.parseInt(term) },
         { customFields: { $elemMatch: { value: regex } } },
       ];
-      ret = ReactiveCache.getCards(query, projection);
+      return ReactiveCache.getCards(query, projection);
     }
-    return ret;
+    return null;
   },
-  // A board alwasy has another board where it deposits subtasks of thasks
+  // A board always has another board where it deposits subtasks of tasks
   // that belong to itself.
   getDefaultSubtasksBoardId() {
     if (
